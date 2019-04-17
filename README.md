@@ -42,23 +42,42 @@
 
         ```javascript
             require('module-alias/register')
+            const Flight = require('@mdoels/Flight');
             const Resource = require('@lib/resource');
-            const FligthsRouter = Resource("flight",{
-                index:function(req,res){
-                    //...
-                },
+
+            const FlightsRouter = Resource("flight",{
+                middle(req,res,next){
+                    Fligth.findById(req.flight_id,{require:false})
+                    .then(function(flight){
+                        if(!flight)return res(404);
+                        req.flight = flight;
+                        next();
+                    });
+                }                
                 create:function(req,res){
                     //...
+                    try{
+                        return Flight.create(req.query).then(function(f){
+                        return res.send({flight_id:f.id});                        
+                        });
+                    }catch(){
+                        return res.status(400).send();
+                    }                    
                 },
                 show:function(req,res){
                     //...
+                    return res.send(req.flight);
                 },
                 update:function(req,res){
                     //...
-                },
-                delete:function(req,res){
-                    //...
-                },
+                    const qry = req.query;
+                    !qry.flytime && !qry.desteny?return res.status(404);
+                    :return ()=>{
+                        req.flight.set("fly_time",qry.flytime);
+                        req.flight.set("deteny",qry.desteny);
+                        return res.send({flight_id:req.flight.id});
+                    };                    
+                },                
             });
         ```
 
