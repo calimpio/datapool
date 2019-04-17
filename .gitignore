@@ -1,0 +1,4 @@
+*.pyc
+*database/*.json
+!databse/type.json
+node_modules/*

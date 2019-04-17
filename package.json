@@ -1,0 +1,41 @@
+{
+  "name": "datapool",
+  "version": "1.0.0",
+  "description": "datapool api package",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "gen": "node key_generator.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barjuegocreador93/wasimo.git"
+  },
+  "author": "Camilo Barbosa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barjuegocreador93/wasimo/issues"
+  },
+  "homepage": "https://github.com/barjuegocreador93/wasimo#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "bookshelf": "^0.14.2",
+    "bookshelf-modelbase": "^2.10.4",
+    "cryptr": "^4.0.2",
+    "custom-env": "^1.0.0",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "module-alias": "^2.2.0",
+    "mysql": "^2.16.0",
+    "node-cache": "^4.2.0",
+    "utilities": "^1.0.5"
+  },
+  "_moduleAliases": {
+    "@lib": "lib",
+    "@api": "api",
+    "@models": "api/models",
+    "@routers": "api/routers",
+    "@config": "api/config"
+  }
+}
